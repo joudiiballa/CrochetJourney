@@ -402,13 +402,71 @@
       pointer-events:none;
     }
 
-    @media(max-width:860px){
-      .grid-2{grid-template-columns:1fr;}
-      .page-inner{padding:20px 16px 20px;}
-      h1{font-size:26px}
-      h2{font-size:22px}
-      .photo-card{padding:10px 8px;}
-    }
+    /* ----------- MOBILE RESPONSIVE FIXES ----------- */
+@media (max-width: 600px) {
+
+  body {
+    overflow: auto; /* allow scrolling normally */
+  }
+
+  header {
+    height: auto;
+    padding: 8px 10px;
+    flex-wrap: wrap;
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+  }
+
+  .nav-btn {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  main {
+    height: auto;
+    padding: 10px;
+  }
+
+  .page-inner {
+    padding: 16px;
+    max-height: none;
+  }
+
+  h1 { font-size: 22px; }
+  h2 { font-size: 20px; }
+  h3 { font-size: 18px; }
+
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .button-row {
+    justify-content: center;
+  }
+
+  .btn-pill {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .photo-img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -434,7 +492,7 @@
       <div class="section-label">Joudi Balla</div>
       <h1>Welcome to My Cozy Place</h1>
       <p class="subtitle">
-        A warm digital space where I share how crochet became part of my life and the pieces I made.
+        A warm digital space where I share how crochet and the pieces became part of my life.
       </p>
 
       <div class="grid-2">
@@ -451,7 +509,7 @@
           <div class="stitch-divider"></div>
 
           <p class="small">
-            To get started, you can click one of the buttons below or navigate the page you want from the navigation bar at the top right. 
+            To get started, you can click on one of the buttons below or navigate the page you want from the navigation bar at the top right. 
           </p>
 
           <div class="button-row">
@@ -470,7 +528,7 @@
 </div>
 
           <p class="small" style="margin-top:6px;">
-            This is one of my Hexagon Cardigans that I really love!
+            This is one of my hexagon cardigans that I really love!
           </p>
         </div>
       </div>
@@ -494,15 +552,15 @@
             <div>
               <p>
                 Yarns were always present in my house. My mom is a skilled crocheter, and my sister is a talented knitter. So, growing up, I have always seen my mom making all the kinds of clothing, applying the styles and colors of her imagination in real life.
-                Also, my sister learned how to knit in her adolescence and created many unique items. 
+                My sister also learned how to knit in her adolescence and created many unique items. 
               </p>
               <p>
                 Watching my mom and sister for years making these cute items and turning everything they imagine into reality intrigued me. My mom had always noticed that and had tried to convince me many times to crochet, but I would not listen, until that day came.
             
               </p>
               <p>
-                In 2020, all my studies took place online, so I stayed home almost all the time, which was boring at the beginning. One day, a friend of mine named Jana came to my house and saw one of the cardigans my mom made. She was fascinated and excited that she decided to try making something similar.
-                When I saw that, I got excited too and decided with her to start learning soon.
+                In 2020, all my studies took place online, so I stayed home almost all the time, which was boring at the beginning. One day, a friend of mine named Jana came to my house and saw one of the cardigans my mom made. She was so fascinated and excited that she decided to try making something similar.
+                When I saw that, I got excited and decided to start learning as well.
         
               </p>
             </div>
@@ -526,18 +584,18 @@
             <div>
               
               <p>
-                My task was not a hard one since my mom had all the tools already in our house, which means I did not have to buy anything.
-                I asked my mom to teach me how to crochet, and she welcomed the idea warmly. She got me one of her yarns (which I later knew was the cheapest one), and had me learn the basics.
+                My task was not a hard one since my mom already had all the tools in our house, which meant I did not have to buy anything.
+                I asked my mom to teach me how to crochet, and she welcomed the idea warmly. She got me one of her yarns (which I later knew was the cheapest one) and had me learn the basics.
                 
               </p>
               <p>
-                She told me that after getting used to the main 4 stitches, I can start my first project. So, I spent hours on repeating the stitches I had learned again and again until I felt ready to start.
+                She told me that after getting used to the main stitches, I can start my first project. So, I spent hours on repeating the stitches I had learned again and again until I felt ready to start.
               </p>
               <p>
                 My mom suggested that I make a scarf since it has a repetitive pattern, where I would repeat the same line over and over until reaching the desired length.
               </p>
               <p>
-                In 2 days, I was done with my first project, which instead of having a rectangular shape, turned into a shape I do not have even a name for. 
+                In 2 days, I was done with my first project, which instead of having a rectangular shape, turned into a shape I do not even have a name for. 
                 I was proud of my first weird-looking project, and so was my mom (though I could see her muffling her laughter).
               </p>
               <p>
@@ -556,7 +614,7 @@
           <div class="grid-2">
             <div>
               <p>
-                Crocheting became a crucial part of my Autumn/Winter days. Making unique items and even holding the hook and yarns in my hand is what brings me peace.
+                Crocheting became a crucial part of my autumn/winter days. Making unique items and even holding the hook and yarns in my hand is what brings me peace.
                 I once read that crocheting is an effective way of reducing stress. From that day on, whenever I feel a bit stressed, I grab my yarn and start crocheting, which in turn, slows my thoughts down.
               </p>
               <p>
@@ -616,7 +674,7 @@
             <img src="images/favorite-project-puff-flowers-cardigan.jpg" alt="My favorite cardigan." />
           </div>
           <div class="photo-text">
-            This is my favorite item so far. I love it because of the puff flowers and the colors. Besides, it is a unique piece of clothing that makes some people ask me where I got it from (the best feeling)
+            This is my favorite item so far. I love it because of the puff flowers and the colors. Besides, it is a unique piece of clothing that makes some people ask me where I got it from (the best feeling).
           </div>
         </div>
 
@@ -625,7 +683,7 @@
             <img src="images/hexagon.jpg" alt="My Hexagon Cardigan." />
           </div>
           <div class="photo-text">
-            This cardigan is the same as the Puff Flowers Hexagon Cardigan except that the colors are different and it does not have any flowers.
+            This cardigan is the same as the puff flowers hexagon Cardigan except that the colors are different and it does not have any flowers.
           </div>
         </div>
 
@@ -634,7 +692,7 @@
             <img src="images/lavender-cardigan.jpg" alt="My Lavender Cardigan." />
           </div>
           <div class="photo-text">
-            This Lavender Granny-Square Cardigan is one of my most cherished pieces because I designed the entire pattern myself.
+            This lavender granny-square cardigan is one of my most cherished pieces because I designed the entire pattern myself.
           </div>
         </div>
 
@@ -652,7 +710,7 @@
             <img src="images/gizem-tulip-hat.jpg" alt="This is my friend Gizem from Turkiye wearing the Tulip Bucket Hat I made her." />
           </div>
           <div class="photo-text">
-            This is my friend Gizem from Istanbul, Turkiye wearing the Tulip Bucket Hat I made her.
+            This is my friend Gizem from Istanbul, Türkiye, wearing the tulip bucket hat I made her.
           </div>
         </div>
 
@@ -661,7 +719,7 @@
             <img src="images/first-project-jinane.jpg" alt="This is my friend Jinane wearing the cute cardigan I made her." />
           </div>
           <div class="photo-text">
-            This is my friend Jinane wearing the cute cardigan I made her. This was the first project (after the weird-looking scarf) I made.
+            This is my friend Jinane wearing the cute cardigan I made her. This was the first project I made (after the weird-looking scarf).
           </div>
         </div>
 
@@ -670,7 +728,7 @@
             <img src="images/hasna-headband.jpg" alt="This is my friend Hasna from France wearing the Tulip Headband I made her." />
           </div>
           <div class="photo-text">
-            This is my friend Hasna from France wearing the Tulip Headband I made her.
+            This is my friend Hasna from France, wearing the tulip headband I made her.
           </div>
         </div>
 
@@ -687,7 +745,7 @@
             <img src="images/jana-heart-cardigan.jpg" alt="This is my friend Jana wearing the Heart Granny-Square Cardigan I made her." />
           </div>
           <div class="photo-text">
-            This is my friend Jana wearing the Heart Granny-Square Cardigan I made her.
+            This is my friend Jana wearing the heart granny-square cardigan I made her.
           </div>
         </div>
 
@@ -696,7 +754,7 @@
             <img src="images/flower-bag.jpg" alt="This is the Flower Bag I made for my friend Rayan." />
           </div>
           <div class="photo-text">
-            This is the Flower Bag I made for my friend Rayan. It is also one of my most beloved projects.
+            This is the flower bag I made for my friend Rayan. It is also one of my most beloved projects.
           </div>
         </div>
 
@@ -785,7 +843,7 @@
         With a little patience and some time dedicated to crocheting, you can become skilled crocheters like me!
       </p>
       <p>
-        I am going to leave some links of some YouTube videos and channels that would help you with your journey.
+        I am going to leave some links to YouTube videos and channels that would help you with your journey.
       </p>
 
     
@@ -958,5 +1016,6 @@
 </script>
 </body>
 </html>
+
 
 
