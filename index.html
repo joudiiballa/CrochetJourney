@@ -8,9 +8,9 @@
   <style>
     :root{
       --bg1:rgb(251, 213, 201);      /* warm peach */
-      --bg2:#f7e3d9;      /* soft cream */
+      --bg2:#f7e3d9;                 /* soft cream */
       --bg3:rgb(248, 208, 216);      /* rosy blush */
-      --panel:#fff8f4;    /* card background */
+      --panel:#fff8f4;               /* card background */
       --accent-pink:rgb(244, 155, 176);
       --accent-peach:rgb(247, 197, 159);
       --accent-sage:#a8c9a7;
@@ -27,14 +27,25 @@
       font-family:"Quicksand",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       background:radial-gradient(circle at top,#fbd5c9 0%,#f7e3d9 45%,#f8d0d8 100%);
       color:var(--text-main);
-      overflow:hidden; /* no global scroll */
+      overflow-x:hidden;
     }
 
-    /* HEADER / NAV */
+    /* GLOBAL LINKS (normal, hover, visited) */
+    a{
+      color:#1da6e6;                 /* blue normal */
+      font-weight:600;
+      text-decoration:underline;
+    }
+    a:hover{
+      color:var(--accent-peach);     /* peach on hover */
+    }
+    a:visited{
+      color:purple;                  /* visited */
+    }
+
+    /* HEADER / NAV (not fixed anymore → no overlap issues) */
     header{
-      position:fixed;
-      top:0;left:0;right:0;
-      height:64px;
+      width:100%;
       padding:10px 20px;
       display:flex;
       align-items:center;
@@ -42,7 +53,6 @@
       background:rgba(255,248,244,.9);
       backdrop-filter:blur(10px);
       box-shadow:0 4px 16px rgba(0,0,0,.12);
-      z-index:50;
     }
     .logo{
       display:flex;
@@ -89,28 +99,19 @@
       color:#fff;
     }
 
-    /* MAIN VIEWPORT */
+    /* MAIN LAYOUT */
     main{
-      position:relative;
-      margin-top:65px;
-      height:calc(100vh - 64px);
       padding:16px;
+      padding-bottom:40px; /* room above footer */
     }
+
     .page{
-      position:absolute;
-      inset:0;
-      display:flex;
-      justify-content:center;
-      align-items:stretch;
-      opacity:0;
-      pointer-events:none;
-      transition:opacity .5s ease;
+      display:none;
     }
     .page.active{
-      opacity:1;
-      pointer-events:auto;
-      z-index:10;
+      display:block;
     }
+
     .page-inner{
       width:100%;
       max-width:1100px;
@@ -122,14 +123,7 @@
       padding:26px 26px 24px;
       display:flex;
       flex-direction:column;
-      overflow-y:auto;
-      max-height:100%;
-      scrollbar-width:thin;
-      scrollbar-color:var(--accent-pink) transparent;
     }
-    .page-inner::-webkit-scrollbar{width:7px}
-    .page-inner::-webkit-scrollbar-thumb{background:var(--accent-pink);border-radius:999px}
-    .page-inner::-webkit-scrollbar-track{background:transparent}
 
     /* TYPOGRAPHY */
     .section-label{
@@ -156,7 +150,17 @@
       color:var(--text-muted);
       margin-bottom:18px;
     }
+    .small{
+      font-size:13px;
+      color:var(--text-muted);
+    }
+    .caption{
+      font-size:13px;
+      color:var(--text-muted);
+      margin-top:6px;
+    }
 
+    /* GRID LAYOUTS */
     .grid-2{
       display:grid;
       grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
@@ -164,17 +168,23 @@
       margin-top:8px;
     }
 
+    /* IMAGE SLOTS / HERO IMAGES */
     .image-slot{
       border-radius:18px;
       border:2px dashed rgba(198,152,136,.7);
       background:#fffaf7;
-      padding: 0;
+      padding:0;
       font-size:14px;
       color:var(--text-muted);
       text-align:center;
+      overflow:hidden;
     }
-    .image-slot strong{display:block;margin-bottom:4px;color:var(--text-main)}
-
+    .image-slot img{
+      width:100%;
+      height:auto;
+      display:block;
+      object-fit:contain;
+    }
     .stitch-divider{
       width:100%;
       height:16px;
@@ -184,6 +194,7 @@
       opacity:.8;
     }
 
+    /* BUTTONS */
     .button-row{
       display:flex;
       flex-wrap:wrap;
@@ -212,8 +223,6 @@
       transform:translateY(-2px);
       box-shadow:0 12px 24px rgba(0,0,0,.22);
     }
-
-    .small{font-size:13px;color:var(--text-muted);}
 
     /* DOT SUB-NAV */
     .dots{
@@ -279,32 +288,6 @@
       from{opacity:0;transform:translateY(6px);}
       to{opacity:1;transform:translateY(0);}
     }
-    
-.hero-image {
-  width: 100%;
-  height: 100%;        /* adjust height to match the frame */
-  object-fit: contain;    /* makes the image fill the space without stretching */
-  border-radius: 16px;
-  box-shadow: 0 6px 22px rgba(0,0,0,0.15);
-}
-.hero-image-full {
-  width: 100%;
-  height: 100%;       /* taller frame so cover doesn't crop the body */
-  object-fit: contain;   /* fills the space beautifully */
-  border-radius: 16px;
-  box-shadow: 0 6px 22px rgba(0,0,0,0.15);
-
-}
-.hero-image-cat {
-  width: 100%;
-  height: 100%x;        /* adjust height to match the frame */
-  object-fit: cover;    /* makes the image fill the space without stretching */
-  border-radius: 16px;
-  box-shadow: 0 6px 22px rgba(0,0,0,0.15);
-  margin-top: -10px;
-}
-
-
 
     .journey-block{
       display:flex;
@@ -342,18 +325,17 @@
       background:#fef3ee;
       overflow:hidden;
       display:block;
-      width: 100%;
-      max-width: 450px;
-      height: 100%;
-      margin: 0 auto;
+      width:100%;
+      max-width:450px;
+      margin:0 auto;
     }
     .photo-img img{
       width:100%;
-      height:100%;
+      height:auto;
       display:block;
       object-fit:cover;
-      object-position: center;
-      
+      object-position:center;
+    }
     .photo-img-placeholder{
       min-height:180px;
       display:grid;
@@ -369,107 +351,68 @@
       color:var(--text-main);
       text-align:left;
     }
-     
 
+    /* RESOURCES DESIGN */
+    .resource-list{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:16px;
+    }
+    .resource-item{
+      border:2px dashed #d8b8ac;
+      border-radius:18px;
+      padding:18px;
+      margin-bottom:4px;
+      background-color:#fff8f3;
+      line-height:1.6;
+      box-shadow:0 4px 14px rgba(0,0,0,0.08);
+    }
 
-     .resource-list {
-  margin-top: 20px;
-}
-
-.resource-item {
-  border: 2px dashed #d8b8ac;    /* matches your gallery frame style */
-  border-radius: 18px;
-  padding: 16px;
-  margin-bottom: 18px;
-  background-color: #fff8f3;     /* soft cream background */
-  line-height: 1.6;
-}
-
-.resource-list a {
-  color: #1da6e6;
-  text-decoration: underline;
-  font-weight: 600;
-}
-
-.resource-list a:hover {
-  color: #8b4e4e;
-}
-
-/* MOBILE spacing */
-@media (max-width: 768px) {
-  .resource-item {
-    padding: 18px;
-    margin-bottom: 22px;
-  }
-}
-
-      
+    /* FOOTER */
     footer{
-      position:fixed;
-      left:0;right:0;bottom:4px;
+      width:100%;
       text-align:center;
       font-size:11px;
       color:#6b524a;
-      pointer-events:none;
+      margin-bottom:10px;
     }
 
-    /* FULL RESPONSIVE FIX */
-body {
-  overflow-x: hidden;
-}
-
-/* allow scrolling inside pages */
-main {
-  height: auto;
-}
-
-.page {
-  position: static;
-  opacity: 1 !important;
-  pointer-events: auto;
-}
-
-.page-inner {
-  max-height: none;
-  overflow-y: visible;
-}
-
-/* MOBILE FIXES */
-@media (max-width: 768px) {
-
-  /* Fix navbar space + alignment */
-  .page-inner {
-    padding-top: 95px !important;
-  }
-
-  nav, .nav-bar {
-    height: auto !important;
-    padding: 8px 0 !important;
-  }
-
-  .site-title {
-    font-size: 20px !important;
-    line-height: 1.2;
-  }
-
-  /* Fix small image + fake two-column layout */
-  .photo-card, .photo-img img {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-  }
-
-  .photo-card {
-    margin-top: 20px !important;
-  }
-}
-
-
-
-}
-
-    
-
+    /* RESPONSIVE: MOBILE */
+    @media(max-width:768px){
+      header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:6px;
+      }
+      nav{
+        justify-content:flex-start;
+      }
+      main{
+        padding:10px;
+        padding-bottom:40px;
+      }
+      .page-inner{
+        padding:20px 16px 20px;
+      }
+      h1{font-size:26px}
+      h2{font-size:22px}
+      .photo-card{padding:10px 8px;}
+      .grid-2{
+        grid-template-columns:1fr; /* STACKED on mobile: text then image */
+      }
+      .button-row{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .btn-pill{
+        justify-content:center;
+        width:100%;
+      }
+      .photo-text{
+        text-align:left;
+      }
+    }
   </style>
 </head>
 <body>
@@ -501,18 +444,17 @@ main {
       <div class="grid-2">
         <div>
           <p>
-         This website is part of my Writing and Digital Means project, where I am using a digital space to tell my story with crochet.
-
+            This website is part of my Writing and Digital Means project, where I am using a digital space to tell my story with crochet.
           </p>
           <p>
-            You can browse each page to read my story, check the items I have made, including photos of my friends and me wearing them, 
+            You can browse each page to read my story, check the items I have made (including photos of my friends and me wearing them), 
             and find resources to help you start crocheting too.
           </p>
 
           <div class="stitch-divider"></div>
 
           <p class="small">
-            To get started, you can click on one of the buttons below or navigate the page you want from the navigation bar at the top right. 
+            To get started, you can click one of the buttons below or navigate the page you want from the navigation bar at the top.
           </p>
 
           <div class="button-row">
@@ -527,11 +469,10 @@ main {
 
         <div>
           <div class="image-slot">
-  <img src="images/mum-cardigan.jpg" alt="A beautiful cardigan that I love" class="hero-image">
-</div>
-
+            <img src="images/mum-cardigan.jpg" alt="A cardigan that I love, handmade in my family">
+          </div>
           <p class="small" style="margin-top:6px;">
-            This is one of my cardigans that I really love!
+            This is one of my cardigans that I really love.
           </p>
         </div>
       </div>
@@ -550,30 +491,26 @@ main {
       <!-- JOURNEY SUBPAGE 1 -->
       <div class="journey-sub active" data-journey="0">
         <div class="journey-block">
-          <h3>1. The house of crocheters 1 </h3>
+          <h3>1. The house of crocheters 1</h3>
           <div class="grid-2">
             <div>
               <p>
-                Yarns were always present in my house. My mom is a skilled crocheter, and my sister is a talented knitter. So, growing up, I have always seen my mom making all the kinds of clothing, applying the styles and colors of her imagination in real life.
+                Yarns were always present in my house. My mom is a skilled crocheter, and my sister is a talented knitter. So, growing up, I have always seen my mom making all kinds of clothing, applying the styles and colors of her imagination in real life.
                 My sister also learned how to knit in her adolescence and created many unique items. 
               </p>
               <p>
                 Watching my mom and sister for years making these cute items and turning everything they imagine into reality intrigued me. My mom had always noticed that and had tried to convince me many times to crochet, but I would not listen, until that day came.
-            
               </p>
               <p>
                 In 2020, all my studies took place online, so I stayed home almost all the time, which was boring at the beginning. One day, one of my friends came to my house and saw one of the cardigans my mom made. She was so fascinated and excited that she decided to try making something similar.
                 When I saw that, I got really excited and decided to start learning as well.
-        
               </p>
             </div>
             <div>
-            <div class="image-slot">
-  <img src="images/hexagon.jpg" alt="Hexagon cardigan" class="hero-image-full">
-</div>
-<p class="caption">This cardigan was handmade by my mom: my biggest inspiration.</p>
-
-
+              <div class="image-slot">
+                <img src="images/hexagon.jpg" alt="Hexagon cardigan handmade by my mom">
+              </div>
+              <p class="caption">This cardigan was handmade by my mom: my biggest inspiration.</p>
             </div>
           </div>
         </div>
@@ -583,30 +520,23 @@ main {
       <div class="journey-sub" data-journey="1">
         <div class="journey-block">
           <h3>2. The house of crocheters 2</h3>
-          <div class="grid-1">
-            <div>
-              
-              <p>
-                My task was not a hard one since my mom already had all the tools in our house, which meant I did not have to buy anything.
-                I asked my mom to teach me how to crochet, and she welcomed the idea warmly. She got me one of her yarns (which I later knew was the cheapest one) and had me learn the basics.
-                
-              </p>
-              <p>
-                She told me that after getting used to the main stitches, I can start my first project. So, I spent hours on repeating the stitches I had learned again and again until I felt ready to start.
-              </p>
-              <p>
-                My mom suggested that I make a scarf since it has a repetitive pattern, where I would repeat the same line over and over until reaching the desired length.
-              </p>
-              <p>
-                In 2 days, I was done with my first project, which instead of having a rectangular shape, turned into a shape I do not even have a name for. 
-                I was proud of my first weird-looking project, and so was my mom (though I could see her muffling her laughter).
-              </p>
-              <p>
-                On the same day, I decided to move forward and start with a cardigan. My mom tried to convince me with something easier, but I was so adamant about it that I actually started the next day.
-              </p>
-            </div>
-            
-          </div>
+          <p>
+            My task was not a hard one since my mom already had all the tools in our house, which meant I did not have to buy anything.
+            I asked my mom to teach me how to crochet, and she welcomed the idea warmly. She got me one of her yarns (which I later knew was the cheapest one) and had me learn the basics.
+          </p>
+          <p>
+            She told me that after getting used to the main stitches, I could start my first project. So I spent hours repeating the stitches I had learned again and again until I felt ready to start.
+          </p>
+          <p>
+            My mom suggested that I make a scarf since it has a repetitive pattern, where I would repeat the same line over and over until reaching the desired length.
+          </p>
+          <p>
+            In 2 days, I was done with my first project, which instead of having a rectangular shape, turned into a shape I do not even have a name for. 
+            I was proud of my first weird-looking project, and so was my mom (though I could see her muffling her laughter).
+          </p>
+          <p>
+            On the same day, I decided to move forward and start with a cardigan. My mom tried to convince me to choose something easier, but I was so adamant about it that I actually started the next day.
+          </p>
         </div>
       </div>
 
@@ -618,7 +548,7 @@ main {
             <div>
               <p>
                 Crocheting became a crucial part of my autumn/winter days. Making unique items and even holding the hook and yarns in my hand is what brings me peace.
-                I once read that crocheting is an effective way of reducing stress. From that day on, whenever I feel a bit stressed, I grab my yarn and start crocheting, which in turn, slows my thoughts down.
+                I once read that crocheting is an effective way of reducing stress. From that day on, whenever I feel a bit stressed, I grab my yarn and start crocheting, which in turn slows my thoughts down.
               </p>
               <p>
                 Crocheting is more of an essential to me than a hobby. I always perform another task while crocheting, such as watching a film, or even studying. 
@@ -627,10 +557,9 @@ main {
             </div>
             <div>
               <div class="image-slot">
-                <img src="images/study-crochet.jpg" alt="Crocheting a coaster while studying and playing with my cat" class="hero-image-cat">
-</div>
-<p class="caption">This is a coaster I made while studying and playing with my cat.</p>
-            
+                <img src="images/study-crochet.jpg" alt="Crocheting a coaster while studying and playing with my cat">
+              </div>
+              <p class="caption">This is a coaster I made while studying and playing with my cat.</p>
             </div>
           </div>
         </div>
@@ -660,176 +589,175 @@ main {
     </div>
   </section>
 
- <!-- GALLERY -->
-<section class="page" data-page="gallery">
-  <div class="page-inner">
-    <div class="section-label">Pieces</div>
-    <h2>Things I crocheted</h2>
-    <p class="subtitle">Use the dots or the buttons to move between pages.</p>
+  <!-- GALLERY -->
+  <section class="page" data-page="gallery">
+    <div class="page-inner">
+      <div class="section-label">Pieces</div>
+      <h2>Things I crocheted</h2>
+      <p class="subtitle">Use the dots or the buttons to move between pages.</p>
 
-    <!-- GALLERY SUBPAGE 1 -->
-    <div class="gallery-sub active" data-gallery="0">
-      <h3>Page 1: Favorites</h3>
-      <div class="photo-list">
+      <!-- GALLERY SUBPAGE 1 -->
+      <div class="gallery-sub active" data-gallery="0">
+        <h3>Page 1: Favorites</h3>
+        <div class="photo-list">
 
-        <div class="photo-card">
-          <div class="photo-img">
-            <img src="images/favorite-project-puff-flowers-cardigan.jpg" alt="My favorite cardigan." />
+          <div class="photo-card">
+            <div class="photo-img">
+              <img src="images/favorite-project-puff-flowers-cardigan.jpg" alt="My favorite cardigan with puff flowers.">
+            </div>
+            <div class="photo-text">
+              This is my favorite item so far. I love it because of the puff flowers and the colors. Besides, it is a unique piece of clothing that makes some people ask me where I got it from (the best feeling).
+            </div>
           </div>
-          <div class="photo-text">
-            This is my favorite item so far. I love it because of the puff flowers and the colors. Besides, it is a unique piece of clothing that makes some people ask me where I got it from (the best feeling).
+
+          <div class="photo-card">
+            <div class="photo-img">
+              <img src="images/colorful-hexagon-cardigan.jpg" alt="My colorful hexagon cardigan.">
+            </div>
+            <div class="photo-text">
+              This cardigan is similar to the puff flowers hexagon cardigan except that the colors are different and it does not have any flowers.
+            </div>
           </div>
+
+          <div class="photo-card">
+            <div class="photo-img">
+              <img src="images/lavender-cardigan.jpg" alt="My lavender cardigan.">
+            </div>
+            <div class="photo-text">
+              This lavender granny-square cardigan is one of my most cherished pieces because I designed the entire pattern myself.
+            </div>
+          </div>
+
         </div>
-
-        <div class="photo-card">
-          <div class="photo-img">
-            <img src="images/colorful-hexagon-cardigan.jpg" alt="My colorful hexagon cardigan." />
-          </div>
-          <div class="photo-text">
-            This cardigan is the same as the puff flowers hexagon cardigan except that the colors are different and it does not have any flowers.
-          </div>
-        </div>
-
-        <div class="photo-card">
-          <div class="photo-img">
-            <img src="images/lavender-cardigan.jpg" alt="My lavender cardigan." />
-          </div>
-          <div class="photo-text">
-            This lavender granny-square cardigan is one of my most cherished pieces because I designed the entire pattern myself.
-          </div>
-        </div>
-
       </div>
-    </div>
 
-    <!-- GALLERY SUBPAGE 2 -->
-    <div class="gallery-sub" data-gallery="1">
-      <h3>Page 2: Gifts for friends 1</h3>
-      <p class="small">The best part of crocheting is gifting my creations to the people I care about.</p>
-      <div class="photo-list">
+      <!-- GALLERY SUBPAGE 2 -->
+      <div class="gallery-sub" data-gallery="1">
+        <h3>Page 2: Gifts for friends 1</h3>
+        <p class="small">The best part of crocheting is gifting my creations to the people I care about.</p>
+        <div class="photo-list">
 
-        <div class="photo-card">
-          <div class="photo-img">
-            <img src="images/gizem-tulip-hat.jpg" alt="This is my friend Gizem from Turkiye, wearing the tulip bucket hat I made her." />
+          <div class="photo-card">
+            <div class="photo-img">
+              <img src="images/gizem-tulip-hat.jpg" alt="My friend Gizem from Türkiye, wearing the tulip bucket hat I made her.">
+            </div>
+            <div class="photo-text">
+              This is my friend Gizem from Istanbul, Türkiye, wearing the tulip bucket hat I made her.
+            </div>
           </div>
-          <div class="photo-text">
-            This is my friend Gizem from Istanbul, Türkiye, wearing the tulip bucket hat I made her.
+
+          <div class="photo-card">
+            <div class="photo-img">
+              <img src="images/first-project-jinane.jpg" alt="My friend Jinane wearing the cute cardigan I made her.">
+            </div>
+            <div class="photo-text">
+              This is my friend Jinane wearing the cute cardigan I made her. This was the first project I made (after the weird-looking scarf).
+            </div>
           </div>
+
+          <div class="photo-card">
+            <div class="photo-img">
+              <img src="images/hasna-headband.jpg" alt="My friend Hasna from France, wearing the tulip headband I made her.">
+            </div>
+            <div class="photo-text">
+              This is my friend Hasna from France, wearing the tulip headband I made her.
+            </div>
+          </div>
+
         </div>
-
-        <div class="photo-card">
-          <div class="photo-img">
-            <img src="images/first-project-jinane.jpg" alt="This is my friend Jinane wearing the cute cardigan I made her." />
-          </div>
-          <div class="photo-text">
-            This is my friend Jinane wearing the cute cardigan I made her. This was the first project I made (after the weird-looking scarf).
-          </div>
-        </div>
-
-        <div class="photo-card">
-          <div class="photo-img">
-            <img src="images/hasna-headband.jpg" alt="This is my friend Hasna from France, wearing the tulip headband I made her." />
-          </div>
-          <div class="photo-text">
-            This is my friend Hasna from France, wearing the tulip headband I made her.
-          </div>
-        </div>
-
       </div>
-    </div>
 
-    <!-- GALLERY SUBPAGE 3 -->
-    <div class="gallery-sub" data-gallery="2">
-      <h3>Page 3: Gifts for friends 2</h3>
-      <div class="photo-list">
+      <!-- GALLERY SUBPAGE 3 -->
+      <div class="gallery-sub" data-gallery="2">
+        <h3>Page 3: Gifts for friends 2</h3>
+        <div class="photo-list">
 
-        <div class="photo-card">
-          <div class="photo-img">
-            <img src="images/jana-heart-cardigan.jpg" alt="This is my friend Jana wearing the heart granny-square cardigan I made her." />
+          <div class="photo-card">
+            <div class="photo-img">
+              <img src="images/jana-heart-cardigan.jpg" alt="My friend Jana wearing the heart granny-square cardigan I made her.">
+            </div>
+            <div class="photo-text">
+              This is my friend Jana wearing the heart granny-square cardigan I made her.
+            </div>
           </div>
-          <div class="photo-text">
-            This is my friend Jana wearing the heart granny-square cardigan I made her.
+
+          <div class="photo-card">
+            <div class="photo-img">
+              <img src="images/flower-bag.jpg" alt="The flower bag I made for my friend Rayan.">
+            </div>
+            <div class="photo-text">
+              This is the flower bag I made for my friend Rayan. It is also one of my most beloved projects.
+            </div>
           </div>
+
+          <div class="photo-card">
+            <div class="photo-img">
+              <img src="images/coasters.jpg" alt="The coasters I made for my friend Balssam because she likes them.">
+            </div>
+            <div class="photo-text">
+              These are the coasters I made for my friend Balssam because she likes them.
+            </div>
+          </div>
+
         </div>
-
-        <div class="photo-card">
-          <div class="photo-img">
-            <img src="images/flower-bag.jpg" alt="This is the flower bag I made for my friend Rayan." />
-          </div>
-          <div class="photo-text">
-            This is the flower bag I made for my friend Rayan. It is also one of my most beloved projects.
-          </div>
-        </div>
-
-        <div class="photo-card">
-          <div class="photo-img">
-            <img src="images/coasters.jpg" alt="These are the coasters I made for my friend Balssam because she likes them." />
-          </div>
-          <div class="photo-text">
-            These are the coasters I made for my friend Balssam because she likes them.
-          </div>
-        </div>
-
       </div>
-    </div>
 
-    <!-- GALLERY SUBPAGE 4 -->
-    <div class="gallery-sub" data-gallery="3">
-      <h3>Page 4: Study companions</h3>
-      <div class="photo-list">
+      <!-- GALLERY SUBPAGE 4 -->
+      <div class="gallery-sub" data-gallery="3">
+        <h3>Page 4: Study companions</h3>
+        <div class="photo-list">
 
-        <div class="photo-card">
-          <div class="photo-img">
-            <img src="images/fatima.jpg" alt="A pouch made with love" />
+          <div class="photo-card">
+            <div class="photo-img">
+              <img src="images/fatima.jpg" alt="A pouch made with love for my friend Fatima.">
+            </div>
+            <div class="photo-text">
+              Pouches are usually the items I enjoy making the most, since they take about the same amount of time it takes to study a chapter. My friend Fatima loved the pouch so much that she tied it onto her jacket right away.
+            </div>
           </div>
-          <div class="photo-text">
-            Pouches are usually the items I enjoy making the most, since they take about the same amount of time it takes to study a chapter. My friend Fatima loved the pouch so much that she tied it onto her jacket right away.
+
+          <div class="photo-card">
+            <div class="photo-img">
+              <img src="images/most-recent-project.jpg" alt="My most recent project.">
+            </div>
+            <div class="photo-text">
+              This is my most recent project. I made it when I was studying the Teaching Methodologies course.
+            </div>
           </div>
+
+          <div class="photo-card">
+            <div class="photo-img">
+              <img src="images/lavender-bookmarks.jpg" alt="My lavender bookmarks.">
+            </div>
+            <div class="photo-text">
+              Making bookmarks is something I do when I take breaks from studying.
+            </div>
+          </div>
+
         </div>
-
-        <div class="photo-card">
-          <div class="photo-img">
-            <img src="images/most-recent-project.jpg" alt="My most recent project." />
-          </div>
-          <div class="photo-text">
-            This is my most recent project. I made it when I was studying the Teaching Methodologies course.
-          </div>
-        </div>
-
-        <div class="photo-card">
-          <div class="photo-img">
-            <img src="images/lavender-bookmarks.jpg" alt="My lavender bookmarks." />
-          </div>
-          <div class="photo-text">
-            Making bookmarks is something I do when I take breaks from studying.
-          </div>
-        </div>
-
       </div>
+
+      <!-- GALLERY DOT NAV + PAGER -->
+      <div class="dots" id="galleryDots">
+        <div class="dot active" data-gjump="0"></div>
+        <div class="dot" data-gjump="1"></div>
+        <div class="dot" data-gjump="2"></div>
+        <div class="dot" data-gjump="3"></div>
+      </div>
+
+      <div class="pager">
+        <button class="pager-btn" id="galleryPrev" disabled>◀ Previous</button>
+        <span class="small">Page <span id="galleryPageNum">1</span> of 4</span>
+        <button class="pager-btn" id="galleryNext">Next ▶</button>
+      </div>
+
+      <div class="button-row">
+        <button class="btn-pill js-nav" data-go="journey"><span class="ico">🪢</span><span>Back to my journey</span></button>
+        <button class="btn-pill js-nav" data-go="learn"><span class="ico">✨</span><span>I want to try too</span></button>
+      </div>
+
     </div>
-
-    <!-- GALLERY DOT NAV + PAGER -->
-    <div class="dots" id="galleryDots">
-      <div class="dot active" data-gjump="0"></div>
-      <div class="dot" data-gjump="1"></div>
-      <div class="dot" data-gjump="2"></div>
-      <div class="dot" data-gjump="3"></div>
-    </div>
-
-    <div class="pager">
-      <button class="pager-btn" id="galleryPrev" disabled>◀ Previous</button>
-      <span class="small">Page <span id="galleryPageNum">1</span> of 4</span>
-      <button class="pager-btn" id="galleryNext">Next ▶</button>
-    </div>
-
-    <div class="button-row">
-      <button class="btn-pill js-nav" data-go="journey"><span class="ico">🪢</span><span>Back to my journey</span></button>
-      <button class="btn-pill js-nav" data-go="learn"><span class="ico">✨</span><span>I want to try too</span></button>
-    </div>
-
-  </div>
-</section>
-
+  </section>
 
   <!-- LEARN -->
   <section class="page" data-page="learn">
@@ -841,108 +769,104 @@ main {
       </p>
 
       <p>
-        I encourage everyone reading this page to start crocheting, so you can always have your unique style embellished with your touch. I learned the basics in less than 2 hours and practiced them over the next 2 days. If I could do it, You all can do it too.
-
-        With a little patience and dedication, you can become skilled crocheters like me!
+        I encourage everyone reading this page to start crocheting, so you can always have your unique style embellished with your touch. I learned the basics in less than 2 hours and practiced them over the next 2 days. If I could do it, you all can do it too.
+      </p>
+      <p>
+        With a little patience and dedication, you can become skilled crocheters like me.
       </p>
       <p>
         I am going to leave some links to YouTube videos and channels that would help you with your journey.
       </p>
 
-    
+      <h3>Beginner-friendly resources</h3>
 
-  <h3>Beginner-friendly resources</h3>
+      <div class="resource-list">
 
-<div class="resource-list">
+        <div class="resource-item">
+          🎥 <a href="https://www.youtube.com/results?search_query=beginner+crochet+stitches" target="_blank">
+            <strong>Basic crochet stitches</strong>
+          </a>
+          <br>
+          <span class="small">These are the basic stitches that you need to start with.</span>
+        </div>
 
-  <div class="resource-item">
-    🎥 <a href="https://www.youtube.com/results?search_query=beginner+crochet+stitches" target="_blank">
-      <strong>Basic crochet stitches</strong>
-    </a>
-    <br>
-    <span class="small">These are the basic stitches that you need to start with.</span>
-  </div>
+        <div class="resource-item">
+          🧶 <a href="https://youtube.com/@passioknitkelsie?si=zaWnVLiUBsAZ3PhH" target="_blank">
+            <strong>My favorite crochet channel</strong>
+          </a>
+          <br>
+          <span class="small">Beginner-friendly projects as well as advanced ones.</span>
+        </div>
 
-  <div class="resource-item">
-    🧶 <a href="https://youtube.com/@passioknitkelsie?si=zaWnVLiUBsAZ3PhH" target="_blank">
-      <strong>My favorite crochet channel</strong>
-    </a>
-    <br>
-    <span class="small">Beginner-friendly projects as well as advanced ones.</span>
-  </div>
+        <div class="resource-item">
+          🌿 <a href="https://www.pinterest.com/search/pins/?q=crochet" target="_blank">
+            <strong>Inspiration board on Pinterest</strong>
+          </a>
+          <br>
+          <span class="small">Explore color palettes, patterns, and shapes.</span>
+        </div>
 
-  <div class="resource-item">
-    🌿 <a href="https://www.pinterest.com/search/pins/?q=crochet" target="_blank">
-      <strong>Inspiration board on Pinterest</strong>
-    </a>
-    <br>
-    <span class="small">Explore color palettes, patterns, and shapes.</span>
-  </div>
+      </div>
 
-</div>
-
-<div class="button-row">
-  <button class="btn-pill js-nav" data-go="gallery"><span class="ico">🧺</span><span>Back to my pieces</span></button>
-  <button class="btn-pill js-nav" data-go="contact"><span class="ico">💌</span><span>Contact / end</span></button>
-</div>
-
-
-  
+      <div class="button-row">
+        <button class="btn-pill js-nav" data-go="gallery"><span class="ico">🧺</span><span>Back to my pieces</span></button>
+        <button class="btn-pill js-nav" data-go="contact"><span class="ico">💌</span><span>Contact / end</span></button>
+      </div>
+    </div>
   </section>
 
   <!-- CONTACT -->
-<section class="page" data-page="contact">
-  <div class="page-inner">
-    <div class="section-label">Last page</div>
-    <h2>Thank you for visiting</h2>
-    <p class="subtitle">
-      I hope seeing my crocheted items was enough to get you to want to start now!
-    </p>
+  <section class="page" data-page="contact">
+    <div class="page-inner">
+      <div class="section-label">Last page</div>
+      <h2>Thank you for visiting</h2>
+      <p class="subtitle">
+        I hope seeing my crocheted items was enough to get you to want to start now!
+      </p>
 
-    <p>
-      If you have any questions or need help with anything related to crocheting, feel free to contact me.
-    </p>
+      <p>
+        If you have any questions or need help with anything related to crocheting, feel free to contact me.
+      </p>
 
-    <h3>What I can make</h3>
-    <ul style="margin-left:18px; margin-bottom:16px; line-height:1.7;">
-      <li>Hats</li>
-      <li>Scarves</li>
-      <li>Gloves</li>
-      <li>Cardigans</li>
-      <li>Coasters</li>
-      <li>Pouches</li>
-      <li>Accessories</li>
-    </ul>
+      <h3>What I can make</h3>
+      <ul style="margin-left:18px; margin-bottom:16px; line-height:1.7;">
+        <li>Hats</li>
+        <li>Scarves</li>
+        <li>Gloves</li>
+        <li>Cardigans</li>
+        <li>Coasters</li>
+        <li>Pouches</li>
+        <li>Accessories</li>
+      </ul>
 
-    <h3>Contact me</h3>
-    <p>
-      📩 Email: <a href=" mailto: ballajoudi@gmail.com" style="color:#1da6e6; font-weight:700;">
-        ballajoudi@gmail.com
-      </a>
-     <div style="margin-top:30px; padding:14px; border-radius:12px; background:#fffaf7; border:1px solid rgba(190,150,135,.45); font-size:13px; line-height:1.6; color:#6b524a;">
-  <strong>Credits & Resources</strong><br>
-  All photos on this website were taken by me or my family and friends, with <a href="https://github.com/joudiiballa/CrochetJourney/tree/main/permissions" target="_blank" style="color:#1da6e6; font-weight:700; text-decoration:underline;"> permission</a>.<br>
-  External tutorial resources:<br>
-  • YouTube – Beginner Crochet Stitches<br>
-  • YouTube – PassioKnit Kelsie<br>
-  • Pinterest – Crochet Inspiration<br>
-</div>
+      <h3>Contact me</h3>
+      <p>
+        📩 Email: 
+        <a href="mailto:ballajoudi@gmail.com">
+          ballajoudi@gmail.com
+        </a>
+      </p>
 
+      <div style="margin-top:30px; padding:14px; border-radius:12px; background:#fffaf7; border:1px solid rgba(190,150,135,.45); font-size:13px; line-height:1.6; color:#6b524a;">
+        <strong>Credits & Resources</strong><br>
+        All photos on this website were taken by me or my family and friends, with 
+        <a href="https://github.com/joudiiballa/CrochetJourney/tree/main/permissions" target="_blank">permission</a>.<br>
+        External tutorial resources:<br>
+        • YouTube – Beginner Crochet Stitches<br>
+        • YouTube – PassioKnit Kelsie<br>
+        • Pinterest – Crochet Inspiration<br>
+      </div>
 
-    </p>
-
-    <div class="button-row">
-      <button class="btn-pill js-nav" data-go="home">
-        <span class="ico">🏠</span><span>Back home</span>
-      </button>
+      <div class="button-row" style="margin-top:20px;">
+        <button class="btn-pill js-nav" data-go="home">
+          <span class="ico">🏠</span><span>Back home</span>
+        </button>
+      </div>
     </div>
-  </div>
-</section>
-
+  </section>
 </main>
 
-  <!-- CONTACT -->
-<footer>© 2025 • My Crochet Journey </footer>
+<footer>© 2025 • My Crochet Journey — digital writing project</footer>
 
 <script>
   // Main page navigation
@@ -953,6 +877,7 @@ main {
   function showPage(id){
     pages.forEach(p => p.classList.toggle('active', p.dataset.page === id));
     navBtns.forEach(b => b.classList.toggle('active', b.dataset.page === id));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   navBtns.forEach(btn=>{
@@ -1026,6 +951,8 @@ main {
 </script>
 </body>
 </html>
+
+
 
 
 
