@@ -369,54 +369,46 @@
       color:var(--text-main);
       text-align:left;
     }
-      .resource-list {
+     
+
+
+      /* RESOURCE BOX STYLING */
+.resource-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-top: 12px;
+  gap: 16px;
+  margin-top: 18px;
 }
 
-/* Each resource card */
 .resource-item {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  gap: 14px;
   background: #fff8f4;
   border-radius: 18px;
   padding: 14px 16px;
-  border: 1px solid rgba(190,150,135,.5);
-  box-shadow: 0 4px 10px rgba(0,0,0,.06);
+  border: 1px solid rgba(190,150,135,.45);
+  box-shadow: 0 6px 16px rgba(0,0,0,.1);
 }
 
-/* Icon on the left */
-.resource-item .icon {
-  font-size: 20px;
-  line-height: 1;
-  margin-top: 2px;
-}
-
-/* Link (title) */
 .resource-link {
-  color: #b26666;
+  color: var(--accent-pink);
   font-weight: 700;
-  text-decoration: underline;
-  font-size: 15px;
+  font-size: 17px;
+  text-decoration: none;
 }
 
-/* Description */
-.resource-item .small {
-  color: #7a6058;
-  font-size: 13px;
-  margin-top: 2px;
-}
-
-/* Hover on desktop (fine on mobile too) */
 .resource-link:hover {
-  color: #8b4e4e;
+  color: var(--accent-peach);
+  text-decoration: underline;
+}
+
+.resource-link:visited {
+  color: var(--accent-sage);
 }
 
 
 
+      
     footer{
       position:fixed;
       left:0;right:0;bottom:4px;
@@ -447,25 +439,39 @@ main {
   overflow-y: visible;
 }
 
-/* Responsive Navigation */
+/* FINAL RESPONSIVE FIX */
 @media (max-width: 700px) {
+
+  body {
+    overflow: auto;
+  }
+
   header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: auto;
     flex-direction: column;
-    align-items: center;
-    padding-bottom: 10px;
+    padding: 12px 0 18px; /* lowers nav bar */
   }
 
   nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
   }
 
   .nav-btn {
-    font-size: 12px;
-    padding: 6px 12px;
-    margin: 2px;
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .page-inner {
+    margin-top: 120px; /* pushes content below nav */
+    padding: 20px 16px;
   }
 
   /* stack columns */
@@ -473,24 +479,22 @@ main {
     grid-template-columns: 1fr;
   }
 
-  /* fix hero image container */
+  /* full width images */
   .image-slot,
-  .photo-img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-
-  img {
+  .photo-img img,
+  .hero-image,
+  .hero-image-full,
+  .hero-image-cat {
     width: 100%;
     height: auto;
     object-fit: contain;
+    margin: 0 auto;
   }
 
-  /* spacing under navbar */
-  .page-inner {
-    margin-top: 90px;
-    padding: 22px 16px;
+  /* fix resource cards */
+  .resource-item {
+    flex-direction: row;
+    align-items: center;
   }
 }
 
@@ -1064,6 +1068,7 @@ main {
 </script>
 </body>
 </html>
+
 
 
 
