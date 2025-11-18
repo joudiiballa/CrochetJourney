@@ -376,40 +376,45 @@
   margin-top: 12px;
 }
 
-/* Card style */
+/* Each resource card */
 .resource-item {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: flex-start;
+  gap: 10px;
   background: #fff8f4;
-  padding: 14px 18px;
   border-radius: 18px;
-  text-decoration: none;
+  padding: 14px 16px;
   border: 1px solid rgba(190,150,135,.5);
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  box-shadow: 0 4px 10px rgba(0,0,0,.06);
 }
 
-/* Hover effect */
-.resource-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+/* Icon on the left */
+.resource-item .icon {
+  font-size: 20px;
+  line-height: 1;
+  margin-top: 2px;
 }
 
-/* Text styles */
-.resource-item strong {
-  color: #3f2c28;
-  font-size: 16px;
+/* Link (title) */
+.resource-link {
+  color: #b26666;
+  font-weight: 700;
+  text-decoration: underline;
+  font-size: 15px;
 }
 
+/* Description */
 .resource-item .small {
   color: #7a6058;
   font-size: 13px;
+  margin-top: 2px;
 }
 
-/* Icon */
-.resource-item .icon {
-  font-size: 20px;
+/* Hover on desktop (fine on mobile too) */
+.resource-link:hover {
+  color: #8b4e4e;
 }
+
 
 
     footer{
@@ -895,41 +900,54 @@
     
 
       <h3>Beginner-friendly resources</h3>
-    <div class="resource-list">
 
-  <a href="https://www.youtube.com/results?search_query=beginner+crochet+stitches" target="_blank" class="resource-item">
+<div class="resource-list">
+
+  <div class="resource-item">
     <div class="icon">🎥</div>
     <div class="text">
-      <strong>Basic crochet stitches</strong><br>
-      <span class="small">These are the basic stitches that you need to start with.</span>
+      <a class="resource-link"
+         href="https://www.youtube.com/results?search_query=beginner+crochet+stitches"
+         target="_blank">
+        Basic crochet stitches
+      </a>
+      <div class="small">These are the basic stitches that you need to start with.</div>
     </div>
-  </a>
+  </div>
 
-  <a href="https://youtube.com/@passioknitkelsie?si=zaWnVLiUBsAZ3PhH" target="_blank" class="resource-item">
+  <div class="resource-item">
     <div class="icon">🧶</div>
     <div class="text">
-      <strong>My favorite crochet channel</strong><br>
-      <span class="small">Beginner-friendly projects as well as advanced ones.</span>
+      <a class="resource-link"
+         href="https://youtube.com/@passioknitkelsie?si=zaWnVLiUBsAZ3PhH"
+         target="_blank">
+        My favorite crochet channel
+      </a>
+      <div class="small">Beginner-friendly projects as well as advanced ones.</div>
     </div>
-  </a>
+  </div>
 
-  <a href="https://www.pinterest.com/search/pins/?q=crochet" target="_blank" class="resource-item">
+  <div class="resource-item">
     <div class="icon">🌿</div>
     <div class="text">
-      <strong>Inspiration board on Pinterest</strong><br>
-      <span class="small">Explore color palettes, patterns, and shapes.</span>
+      <a class="resource-link"
+         href="https://www.pinterest.com/search/pins/?q=crochet"
+         target="_blank">
+        Inspiration board on Pinterest
+      </a>
+      <div class="small">Explore color palettes, patterns, and shapes.</div>
     </div>
-  </a>
+  </div>
 
 </div>
 
+<!-- keep your existing buttons under this -->
+<div class="button-row">
+  <button class="btn-pill js-nav" data-go="gallery"><span class="ico">🧺</span><span>Back to my pieces</span></button>
+  <button class="btn-pill js-nav" data-go="contact"><span class="ico">💌</span><span>Contact / end</span></button>
+</div>
 
-
-      <div class="button-row">
-        <button class="btn-pill js-nav" data-go="gallery"><span class="ico">🧺</span><span>Back to my pieces</span></button>
-        <button class="btn-pill js-nav" data-go="contact"><span class="ico">💌</span><span>Contact / end</span></button>
-      </div>
-    </div>
+  
   </section>
 
   <!-- CONTACT -->
@@ -1068,6 +1086,7 @@
 </script>
 </body>
 </html>
+
 
 
 
