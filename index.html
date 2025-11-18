@@ -372,25 +372,36 @@
      
 
 
-      .resource-list {
-  margin-top: 15px;
+     .resource-list {
+  margin-top: 20px;
 }
 
 .resource-item {
-  margin-bottom: 20px;
-  line-height: 1.5;
+  border: 2px dashed #d8b8ac;    /* matches your gallery frame style */
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 18px;
+  background-color: #fff8f3;     /* soft cream background */
+  line-height: 1.6;
 }
 
 .resource-list a {
-  color: #b26666;            /* matches your theme */
-  font-weight: 600;
+  color: #b26666;
   text-decoration: underline;
+  font-weight: 600;
 }
 
 .resource-list a:hover {
   color: #8b4e4e;
 }
 
+/* MOBILE spacing */
+@media (max-width: 768px) {
+  .resource-item {
+    padding: 18px;
+    margin-bottom: 22px;
+  }
+}
 
       
     footer{
@@ -815,7 +826,7 @@ main {
 
     
 
-      <h3>Beginner-friendly resources</h3>
+  <h3>Beginner-friendly resources</h3>
 
 <div class="resource-list">
 
@@ -845,14 +856,11 @@ main {
 
 </div>
 
-
-</div>
-
-<!-- keep your existing buttons under this -->
 <div class="button-row">
   <button class="btn-pill js-nav" data-go="gallery"><span class="ico">🧺</span><span>Back to my pieces</span></button>
   <button class="btn-pill js-nav" data-go="contact"><span class="ico">💌</span><span>Contact / end</span></button>
 </div>
+
 
   
   </section>
@@ -993,6 +1001,7 @@ main {
 </script>
 </body>
 </html>
+
 
 
 
