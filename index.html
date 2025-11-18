@@ -434,13 +434,60 @@ main {
   overflow-y: visible;
 }
 
-@media(max-width:860px){
-      .grid-2{grid-template-columns:1fr;}
-      .page-inner{padding:20px 16px 20px;}
-      h1{font-size:26px}
-      h2{font-size:22px}
-      .photo-card{padding:10px 8px;}
-    }
+/* ===== MOBILE FIXES FOR ALL PAGES ===== */
+@media (max-width: 768px) {
+
+  .page-inner {
+    padding: 40px 20px 30px;
+  }
+
+  /* Make layout single column */
+  .photo-list, .photo-card, .resource-item {
+    display: block;
+    width: 100%;
+  }
+
+  .photo-card {
+    margin-bottom: 28px;
+  }
+
+  .photo-img {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .photo-img img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .photo-text {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* Buttons full width stacked */
+  .button-row {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    margin-top: 25px;
+  }
+
+  .btn-pill {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Resource boxes full width */
+  .resource-item {
+    margin-bottom: 22px;
+    padding: 18px;
+  }
+}
+
 }
 
     
@@ -1001,6 +1048,7 @@ main {
 </script>
 </body>
 </html>
+
 
 
 
