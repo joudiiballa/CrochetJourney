@@ -429,23 +429,71 @@
     /* ----------- MOBILE RESPONSIVE FIXES ----------- */
 /* MOBILE RESPONSIVE STYLES */
 /* MOBILE NAVIGATION FIX */
+/* --------------------------------------------------
+   MOBILE RESPONSIVE FIXES
+-------------------------------------------------- */
 @media (max-width: 600px) {
-  nav {
-    padding: 6px 10px;
-  }
 
-  .nav-items a {
-    font-size: 12px;
-    margin: 0 6px;
+  body {
+    overflow: auto; /* allow scrolling on mobile */
   }
 
   header {
-    padding-bottom: 14px; /* creates the white space under nav */
+    height: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .nav-btn {
+    font-size: 11px;
+    padding: 6px 10px;
   }
 
   .page-inner {
-    padding-top: 40px; /* adds space under navbar */
+    padding-top: 80px; /* push content below nav */
   }
+
+  /* Fix 2-column layout stacking */
+  .grid-2 {
+    grid-template-columns: 1fr; /* stack vertically */
+  }
+
+  .photo-img,
+  .hero-image,
+  .hero-image-full,
+  .hero-image-cat {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .photo-card {
+    padding: 10px;
+  }
+}
+ /* LINK COLOR EFFECTS */
+a {
+  color: #b26666;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+a:hover {
+  color: var(--accent-pink);
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--accent-sage);
 }
 
     }
@@ -1018,6 +1066,7 @@
 </script>
 </body>
 </html>
+
 
 
 
