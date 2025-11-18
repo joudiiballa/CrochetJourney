@@ -434,41 +434,36 @@ main {
   overflow-y: visible;
 }
 
-/* ===== HARD MOBILE FIX FOR IMAGE FLOAT ISSUE ===== */
+/* MOBILE FIXES */
 @media (max-width: 768px) {
 
-  /* force elements into single column */
-  .photo-card, .photo-img, .photo-text {
+  /* Fix navbar space + alignment */
+  .page-inner {
+    padding-top: 95px !important;
+  }
+
+  nav, .nav-bar {
+    height: auto !important;
+    padding: 8px 0 !important;
+  }
+
+  .site-title {
+    font-size: 20px !important;
+    line-height: 1.2;
+  }
+
+  /* Fix small image + fake two-column layout */
+  .photo-card, .photo-img img {
     width: 100% !important;
+    height: auto !important;
     display: block !important;
   }
 
   .photo-card {
-    margin: 0 auto 25px auto !important;
-  }
-
-  .photo-img img {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: contain !important;
-  }
-
-  /* remove any floating / side positioning */
-  .photo-card, .photo-img, .photo-text, img {
-    float: none !important;
-    clear: both !important;
-  }
-
-  /* center captions */
-  .photo-text {
-    text-align: center !important;
-  }
-
-  /* ensure padding is enough below navbar */
-  .page-inner {
-    padding-top: 60px !important;
+    margin-top: 20px !important;
   }
 }
+
 
 
 }
@@ -1031,6 +1026,7 @@ main {
 </script>
 </body>
 </html>
+
 
 
 
