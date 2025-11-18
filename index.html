@@ -372,40 +372,24 @@
      
 
 
-      /* RESOURCE BOX STYLING */
-.resource-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 18px;
+      .resource-list {
+  margin-top: 15px;
 }
 
 .resource-item {
-  display: flex;
-  gap: 14px;
-  background: #fff8f4;
-  border-radius: 18px;
-  padding: 14px 16px;
-  border: 1px solid rgba(190,150,135,.45);
-  box-shadow: 0 6px 16px rgba(0,0,0,.1);
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
-.resource-link {
-  color: var(--accent-pink);
-  font-weight: 700;
-  font-size: 17px;
-  text-decoration: none;
-}
-
-.resource-link:hover {
-  color: var(--accent-peach);
+.resource-list a {
+  color: #b26666;            /* matches your theme */
+  font-weight: 600;
   text-decoration: underline;
 }
 
-.resource-link:visited {
-  color: var(--accent-sage);
+.resource-list a:hover {
+  color: #8b4e4e;
 }
-
 
 
       
@@ -439,66 +423,16 @@ main {
   overflow-y: visible;
 }
 
-/* FINAL RESPONSIVE FIX */
-@media (max-width: 700px) {
-
-  body {
-    overflow: auto;
-  }
-
-  header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: auto;
-    flex-direction: column;
-    padding: 12px 0 18px; /* lowers nav bar */
-  }
-
-  nav {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 8px;
-  }
-
-  .nav-btn {
-    font-size: 13px;
-    padding: 6px 10px;
-  }
-
-  .page-inner {
-    margin-top: 120px; /* pushes content below nav */
-    padding: 20px 16px;
-  }
-
-  /* stack columns */
-  .grid-2 {
-    grid-template-columns: 1fr;
-  }
-
-  /* full width images */
-  .image-slot,
-  .photo-img img,
-  .hero-image,
-  .hero-image-full,
-  .hero-image-cat {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    margin: 0 auto;
-  }
-
-  /* fix resource cards */
-  .resource-item {
-    flex-direction: row;
-    align-items: center;
-  }
+@media(max-width:860px){
+      .grid-2{grid-template-columns:1fr;}
+      .page-inner{padding:20px 16px 20px;}
+      h1{font-size:26px}
+      h2{font-size:22px}
+      .photo-card{padding:10px 8px;}
+    }
 }
 
-    }
+    
 
   </style>
 </head>
@@ -886,40 +820,31 @@ main {
 <div class="resource-list">
 
   <div class="resource-item">
-    <div class="icon">🎥</div>
-    <div class="text">
-      <a class="resource-link"
-         href="https://www.youtube.com/results?search_query=beginner+crochet+stitches"
-         target="_blank">
-        Basic crochet stitches
-      </a>
-      <div class="small">These are the basic stitches that you need to start with.</div>
-    </div>
+    🎥 <a href="https://www.youtube.com/results?search_query=beginner+crochet+stitches" target="_blank">
+      <strong>Basic crochet stitches</strong>
+    </a>
+    <br>
+    <span class="small">These are the basic stitches that you need to start with.</span>
   </div>
 
   <div class="resource-item">
-    <div class="icon">🧶</div>
-    <div class="text">
-      <a class="resource-link"
-         href="https://youtube.com/@passioknitkelsie?si=zaWnVLiUBsAZ3PhH"
-         target="_blank">
-        My favorite crochet channel
-      </a>
-      <div class="small">Beginner-friendly projects as well as advanced ones.</div>
-    </div>
+    🧶 <a href="https://youtube.com/@passioknitkelsie?si=zaWnVLiUBsAZ3PhH" target="_blank">
+      <strong>My favorite crochet channel</strong>
+    </a>
+    <br>
+    <span class="small">Beginner-friendly projects as well as advanced ones.</span>
   </div>
 
   <div class="resource-item">
-    <div class="icon">🌿</div>
-    <div class="text">
-      <a class="resource-link"
-         href="https://www.pinterest.com/search/pins/?q=crochet"
-         target="_blank">
-        Inspiration board on Pinterest
-      </a>
-      <div class="small">Explore color palettes, patterns, and shapes.</div>
-    </div>
+    🌿 <a href="https://www.pinterest.com/search/pins/?q=crochet" target="_blank">
+      <strong>Inspiration board on Pinterest</strong>
+    </a>
+    <br>
+    <span class="small">Explore color palettes, patterns, and shapes.</span>
   </div>
+
+</div>
+
 
 </div>
 
@@ -1068,6 +993,7 @@ main {
 </script>
 </body>
 </html>
+
 
 
 
