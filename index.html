@@ -375,38 +375,29 @@
   font-weight: 600;
 }
 
-.resource-list a:hover {
-  color: #8b4e4e;           /* darker hover */
-}
-
 .resource-item {
-  margin-bottom: 22px;
-  line-height: 1.5;
+  background: #fff8f4;
+  border: 1px dashed #d6a99c;
+  padding: 16px 20px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
+.resource-item a {
+  text-decoration: none;
+  color: #7a4a4a;
+  display: block;
+  width: 100%;
+}
 
-    .resource-list{
-      display:grid;
-      gap:10px;
-      margin-top:10px;
-    }
-    .resource-item{
-      border-radius:14px;
-      background:#fffaf7;
-      border:1px solid rgba(190,150,135,.5);
-      padding:10px 12px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-    }
-    .resource-item a{
-      font-size:13px;
-      font-weight:600;
-      color:#385a44;
-      text-decoration:none;
-    }
-    .resource-item a:hover{text-decoration:underline}
+.resource-item a strong {
+  font-size: 1.05rem;
+}
+
+.resource-item a:hover {
+  text-decoration: underline;
+}
 
     footer{
       position:fixed;
@@ -893,28 +884,29 @@
       <h3>Beginner-friendly resources</h3>
     <div class="resource-list">
 
-  <p class="resource-item">
-    🎥 <a href="https://www.youtube.com/results?search_query=beginner+crochet+stitches" target="_blank">
-      <strong>Basic crochet stitches</strong>
-    </a><br>
-    <span class="small">These are the basic stitches that you need to start with.</span>
-  </p>
+  <div class="resource-item">
+    <a href="https://www.youtube.com/results?search_query=beginner+crochet+stitches" target="_blank">
+      🎥 <strong>Basic crochet stitches</strong>
+      <br><span class="small">These are the basic stitches that you need to start with.</span>
+    </a>
+  </div>
 
-  <p class="resource-item">
-    🧶 <a href="https://youtube.com/@passioknitkelsie?si=zaWnVLiUBsAZ3PhH" target="_blank">
-      <strong>My favorite crochet channel</strong>
-    </a><br>
-    <span class="small">Beginner-friendly projects as well as advanced ones.</span>
-  </p>
+  <div class="resource-item">
+    <a href="https://youtube.com/@passioknitkelsie?si=zaWnVLiUBsAZ3PhH" target="_blank">
+      🧶 <strong>My favorite crochet channel</strong>
+      <br><span class="small">Beginner-friendly projects as well as advanced ones.</span>
+    </a>
+  </div>
 
-  <p class="resource-item">
-    🌿 <a href="https://www.pinterest.com/search/pins/?q=crochet" target="_blank">
-      <strong>Inspiration board on Pinterest</strong>
-    </a><br>
-    <span class="small">Explore color palettes, patterns, and shapes.</span>
-  </p>
+  <div class="resource-item">
+    <a href="https://www.pinterest.com/search/pins/?q=crochet" target="_blank">
+      🌿 <strong>Inspiration board on Pinterest</strong>
+      <br><span class="small">Explore color palettes, patterns, and shapes.</span>
+    </a>
+  </div>
 
 </div>
+
 
       <div class="button-row">
         <button class="btn-pill js-nav" data-go="gallery"><span class="ico">🧺</span><span>Back to my pieces</span></button>
@@ -1059,6 +1051,7 @@
 </script>
 </body>
 </html>
+
 
 
 
