@@ -418,15 +418,16 @@
     }
 
     /* ----------- MOBILE RESPONSIVE FIXES ----------- */
+/* MOBILE RESPONSIVE STYLES */
 @media (max-width: 600px) {
 
   body {
-    overflow: auto; /* allow scrolling normally */
+    overflow: auto;
   }
 
   header {
     height: auto;
-    padding: 8px 10px;
+    padding: 10px 12px;
     flex-wrap: wrap;
   }
 
@@ -435,64 +436,78 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 4px;
-    margin-top: 6px;
+    gap: 6px;
+    margin-top: 8px;
   }
 
   .nav-btn {
-    font-size: 10px;
-    padding: 6px 10px;
+    font-size: 12px;
+    padding: 6px 12px;
   }
 
   main {
     height: auto;
-    padding: 10px;
-    padding-top: 50px;
+    padding: 12px;
+    padding-top: 60px; /* extra space under navbar */
   }
 
   .page-inner {
-    padding: 16px;
+    padding: 24px 18px;
     max-height: none;
   }
 
-  h1 { font-size: 22px; }
-  h2 { font-size: 20px; }
+  h1 { font-size: 26px; }
+  h2 { font-size: 22px; }
   h3 { font-size: 18px; }
 
   p {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.6;
   }
 
+  /* BUTTONS */
   .button-row {
     justify-content: center;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .btn-pill {
-    padding: 8px 12px;
-    font-size: 13px;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+
+  /* IMAGE + TEXT LAYOUT FIX */
+  .photo-list {
+    display: block !important;
+  }
+
+  .photo-card {
+    width: 100% !important;
+    display: block !important;
+    margin-bottom: 28px !important;
   }
 
   .photo-img {
-    max-width: 100%;
-    height: auto;
+    width: 100% !important;
+    display: block !important;
+    margin: 0 auto 12px auto !important;
   }
 
-  .grid-2 {
-  grid-template-columns: 1fr !important;
-}
+  .photo-img img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
 
-.image-slot {
-  margin: 0 auto;
-  width: 100%;
-}
-
-.photo-text {
-  text-align: center;
-}
-
+  .photo-text {
+    text-align: center !important;
+    margin-top: 6px;
   }
 }
+    }
 
   </style>
 </head>
@@ -1044,6 +1059,7 @@
 </script>
 </body>
 </html>
+
 
 
 
