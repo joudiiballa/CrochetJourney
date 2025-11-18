@@ -353,13 +353,7 @@
       display:block;
       object-fit:cover;
       object-position: center;
-      .open {
-        color: #1da6e6;
-        font-weight: 600;
-        text-decoration: underline;
-    }
-      .open: hover{
-        color: #a45458;}
+      
     .photo-img-placeholder{
       min-height:180px;
       display:grid;
@@ -375,6 +369,21 @@
       color:var(--text-main);
       text-align:left;
     }
+      .resource-list a {
+  color: #b26666;           /* warm pink/brown tone */
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.resource-list a:hover {
+  color: #8b4e4e;           /* darker hover */
+}
+
+.resource-item {
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
 
     .resource-list{
       display:grid;
@@ -867,29 +876,30 @@
     
 
       <h3>Beginner-friendly resources</h3>
-      <div class="resource-list">
-        <div class="resource-item">
-          <div>
-            🎥 <strong>Basic crochet stitches </strong><br>
-            <span class="small"> These are the basic stitches that you need to start with.</span>
-          </div>
-          <a href="https://www.youtube.com/results?search_query=beginner+crochet+stitches" class="open" target="_blank">Open</a>
-        </div>
-        <div class="resource-item">
-          <div>
-            🧶 <strong>My Favorite Channel</strong><br>
-            <span class="small">   You may find beginner-friendly projects, as well as big ones on this channel.</span>
-          </div>
-          <a href="https://youtube.com/@passioknitkelsie?si=zaWnVLiUBsAZ3PhH" class="open" target="_blank">Open</a>
-        </div>
-        <div class="resource-item">
-          <div>
-            🌿 <strong>Inspiration board</strong><br>
-            <span class="small">Pinterest colors and shapes to get ideas from.</span>
-          </div>
-          <a href="https://www.pinterest.com/search/pins/?q=crochet" class="open" target="_blank">Open</a>
-        </div>
-      </div>
+    <div class="resource-list">
+
+  <p class="resource-item">
+    🎥 <a href="https://www.youtube.com/results?search_query=beginner+crochet+stitches" target="_blank">
+      <strong>Basic crochet stitches</strong>
+    </a><br>
+    <span class="small">These are the basic stitches that you need to start with.</span>
+  </p>
+
+  <p class="resource-item">
+    🧶 <a href="https://youtube.com/@passioknitkelsie?si=zaWnVLiUBsAZ3PhH" target="_blank">
+      <strong>My favorite crochet channel</strong>
+    </a><br>
+    <span class="small">Beginner-friendly projects as well as advanced ones.</span>
+  </p>
+
+  <p class="resource-item">
+    🌿 <a href="https://www.pinterest.com/search/pins/?q=crochet" target="_blank">
+      <strong>Inspiration board on Pinterest</strong>
+    </a><br>
+    <span class="small">Explore color palettes, patterns, and shapes.</span>
+  </p>
+
+</div>
 
       <div class="button-row">
         <button class="btn-pill js-nav" data-go="gallery"><span class="ico">🧺</span><span>Back to my pieces</span></button>
@@ -1034,6 +1044,7 @@
 </script>
 </body>
 </html>
+
 
 
 
