@@ -434,59 +434,42 @@ main {
   overflow-y: visible;
 }
 
-/* ===== MOBILE FIXES FOR ALL PAGES ===== */
+/* ===== HARD MOBILE FIX FOR IMAGE FLOAT ISSUE ===== */
 @media (max-width: 768px) {
 
-  .page-inner {
-    padding: 40px 20px 30px;
-  }
-
-  /* Make layout single column */
-  .photo-list, .photo-card, .resource-item {
-    display: block;
-    width: 100%;
+  /* force elements into single column */
+  .photo-card, .photo-img, .photo-text {
+    width: 100% !important;
+    display: block !important;
   }
 
   .photo-card {
-    margin-bottom: 28px;
-  }
-
-  .photo-img {
-    width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 25px auto !important;
   }
 
   .photo-img img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
   }
 
+  /* remove any floating / side positioning */
+  .photo-card, .photo-img, .photo-text, img {
+    float: none !important;
+    clear: both !important;
+  }
+
+  /* center captions */
   .photo-text {
-    text-align: center;
-    margin-top: 10px;
+    text-align: center !important;
   }
 
-  /* Buttons full width stacked */
-  .button-row {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    width: 100%;
-    margin-top: 25px;
-  }
-
-  .btn-pill {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Resource boxes full width */
-  .resource-item {
-    margin-bottom: 22px;
-    padding: 18px;
+  /* ensure padding is enough below navbar */
+  .page-inner {
+    padding-top: 60px !important;
   }
 }
+
 
 }
 
@@ -1048,6 +1031,7 @@ main {
 </script>
 </body>
 </html>
+
 
 
 
